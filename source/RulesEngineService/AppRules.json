@@ -1,0 +1,33 @@
+[
+    {
+        "WorkflowName": "DiscountPercentage",
+        "GlobalParams": [
+            {
+                "Name": "CompareValue",
+                "Expression": "1000"
+            }
+        ],
+        "Rules": [
+            {
+                "RuleName": "CreditCard",
+                "Expression": "PaymentType == \"CreditCard\"",
+                "SuccessEvent": "5"
+            },
+            {
+                "RuleName": "DebitCard",
+                "Expression": "PaymentType == \"DebitCard\"",
+                "SuccessEvent": "10"
+            },
+            {
+                "RuleName": "CashLessThan",
+                "Expression": "PaymentType == \"Cash\" && Value < CompareValue",
+                "SuccessEvent": "15"
+            },
+            {
+                "RuleName": "CashGreaterThanOrEqual",
+                "Expression": "PaymentType == \"Cash\" && Value >= CompareValue",
+                "SuccessEvent": "20"
+            }
+        ]
+    }
+]
